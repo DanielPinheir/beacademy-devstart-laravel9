@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div class="container w-50 p-3">
+    <div class="container w-75 p-3">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">  
                 <ul class="navbar-nav mr-auto">

@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(5);
 
         return view('users.index', compact('users'));
     }
@@ -52,10 +52,13 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
 
         // Pegando a imagem e salvando dentro de uma pasta 'public' dentro de 'profile'
-        $file = $request['image'];
-        $path = $file->store('profile', 'public');
-        $data['image'] = $path;
-
+        if ($request->image) 
+        {
+            $file = $request['image'];
+            $path = $file->store('profile', 'public');
+            $data['image'] = $path;
+        }
+        
         $this->model->create($data);
 
         return redirect()->route('users.index');
